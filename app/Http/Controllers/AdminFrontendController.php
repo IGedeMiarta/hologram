@@ -60,16 +60,18 @@ class AdminFrontendController extends Controller
         return view('admin.porto',$data);
     }
     public function portoPost(Request $request){
-        $validate = Validator::make($request->all(),[
-            'project_name' => 'required',
-            'client_name' => 'required',
-            'complate_date' => 'required',
-            'project_img' => 'required|image|max:2048', // Adjust max file size as needed
-            'client_img' => 'required|image|max:2048', // Adjust max file size as needed
-        ]);
-        if ($validate->fails()) {
-           return redirect()->back()->with('error','Validasi Error, Semua Input Wajib Diisi');
-        }
+
+        // $validate = Validator::make($request->all(),[
+        //     'project_name' => 'required',
+        //     'client_name' => 'required',
+        //     'complate_date' => 'required',
+        //     'project_img' => 'required|image|max:2048', // Adjust max file size as needed
+        //     'client_img' => 'required|image|max:2048', // Adjust max file size as needed
+        // ]);
+        // if ($validate->fails()) {
+        //    return redirect()->back()->with('error','Validasi Error, Semua Input Wajib Diisi');
+        // }
+        // dd($request->all());
         DB::beginTransaction();
         try {
                 // Handle file uploads for header_img

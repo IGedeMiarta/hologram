@@ -139,7 +139,7 @@
                         </div>
                         <div class="form-group">
                             <label for="project_img">Project Image</label>
-                            <input type="file" class="dropify" name="project_img" id="project_img" />
+                            <input type="file" class="dropify" name="project_img" id="project_img" required />
                         </div>
                         <div class="form-group">
                             <label for="client_name">Client Name</label>
@@ -149,7 +149,7 @@
                         <div class="form-group">
                             <label for="client_img">Client Image</label>
                             <input type="file" class="dropify" name="client_img" id="client_img"
-                                data-default-file="" />
+                                data-default-file="" required />
                         </div>
                         <div class="form-group">
                             <label for="date_complate">Tanggal Selesai</label>
