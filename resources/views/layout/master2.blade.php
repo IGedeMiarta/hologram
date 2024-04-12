@@ -9,7 +9,10 @@ License: You must have a valid license purchased only from https://themeforest.n
 <html>
 
 <head>
-    <title>Hologram {{ $title ?? '' }}</title>
+    @php
+        $activeApp = App\DefaultSettings::first();
+    @endphp
+    <title> {{ $title ?? '' }} - {{ $activeApp->name }}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

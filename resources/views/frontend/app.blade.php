@@ -6,13 +6,18 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="{{ asset('/frontend') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/frontend') }}/css/swiper.min.css" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" href="{{ asset('/frontend') }}/css/animate.css">
     <link href="{{ asset('/frontend') }}/css/style.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/frontend') }}/css/all.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/frontend') }}/css/fontawesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('/frontend') }}/img/favicon.ico" rel="shortcut icon" />
+    <link href="logo.png" rel="shortcut icon" />
     <link href="https://fonts.googleapis.com/css?family=Lato:700,900%7CDidact+Gothic" rel="stylesheet">
-    <title>Hologram {{ $title ?? '' }}</title>
+    @php
+        $activeApp = App\DefaultSettings::first();
+    @endphp
+    <title>{{ $activeApp->name }}</title>
 </head>
 
 <body>
@@ -88,7 +93,7 @@
         <footer class="footer-style">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12" style="display: flex; justify-content: end">
                         <div class="copyright normal-s">
                             &copy; 2024 All rights reserved. Development with <i class="fa fa-heart"></i> by <a
                                 href="https://igedemiarta.github.io/" target="blank">Miartayasa.</a>
@@ -103,6 +108,8 @@
 
     <script src="{{ asset('/frontend') }}/js/jquery-2.2.4.min.js"></script>
     <script src="{{ asset('/frontend') }}/js/wow.min.js"></script>
+    <script src="{{ asset('/frontend') }}/js/swiper.jquery.min.js"></script>
+
     <script src="{{ asset('/frontend') }}/js/global.js"></script>
 
 </body>

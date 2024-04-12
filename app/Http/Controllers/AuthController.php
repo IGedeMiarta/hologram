@@ -36,8 +36,8 @@ class AuthController extends Controller
         }
     }
     public function register(){
-        $data['register'] = 'Register';
-        view('pages.auth.register',$data);
+        $data['title'] = 'Register';
+        return view('pages.auth.register',$data);
     }
     public function registerPost(Request $request){
         $request->validate([

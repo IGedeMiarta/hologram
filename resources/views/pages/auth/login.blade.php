@@ -10,12 +10,12 @@
                         <div class="col-md-4 pr-md-0">
                             <div class="auth-left-wrapper"
                                 style="background-image: url({{ asset('logo.png') }}); background-position: center;">
-
                             </div>
                         </div>
                         <div class="col-md-8 pl-md-0">
                             <div class="auth-form-wrapper px-4 py-5">
-                                <a href="#" class="noble-ui-logo logo-light d-block mb-2">Hologram<span>APP</span></a>
+                                <a href="#" class="noble-ui-logo logo-light d-block mb-2">Hologram<span
+                                        class="text-small">APP</span></a>
                                 <h5 class="text-muted font-weight-normal mb-4">Welcome back! Log in to your account.</h5>
                                 <form class="forms-sample" method="POST" action="{{ route('login.post') }}">
                                     @csrf
@@ -42,7 +42,7 @@
                                             Login with twitter
                                         </button> --}}
                                     </div>
-                                    <a href="{{ url('/auth/register') }}" class="d-block mt-3 text-muted">Not a user? <span
+                                    <a href="{{ url('/register') }}" class="d-block mt-3 text-muted">Not a user? <span
                                             class="text-primary">Sign
                                             up</span></a>
                                 </form>

@@ -15,11 +15,11 @@ class CreatePortofoliosTable extends Migration
     {
         Schema::create('portofolios', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('by_logo');
-            $table->string('by_name');
-            $table->string('header_img');
-            $table->date('complte');
+            $table->string('project_name');
+            $table->string('project_img');
+            $table->string('client_name');
+            $table->string('client_img');
+            $table->date('complate_date');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

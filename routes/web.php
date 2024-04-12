@@ -11,26 +11,57 @@
 |
 */
 
+use App\Http\Controllers\AdminFrontendController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
-Route::get('login', [AuthController::class,'login'])->name('login');
-Route::post('/login',[AuthController::class,'loginPost'])->name('login.post');
-Route::get('register',[AuthController::class,'register'])->name('register');
-Route::post('register',[AuthController::class,'registerPost'])->name('register.post');
+Route::middleware('guest')->group(function(){
+    Route::get('login', [AuthController::class,'login'])->name('login');
+    Route::post('/login',[AuthController::class,'loginPost'])->name('login.post');
+    Route::get('register',[AuthController::class,'register'])->name('register');
+    Route::post('register',[AuthController::class,'registerPost'])->name('register.post');
+});
 
 Route::get('/',[FrontendController::class,'index'])->name('home');
+Route::get('/about',[FrontendController::class,'about'])->name('about');
+Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
+Route::post('/contact',[AdminFrontendController::class,'contactPost'])->name('contact.post');
 
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function(){
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
+    Route::get('/', [DashboardController::class,'index'])->name('dashboard');
     Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+
+    Route::name('frontend.')->group(function(){
+        Route::get('/settings',[AdminFrontendController::class,'settings'])->name('settings');
+        Route::post('/settings',[AdminFrontendController::class,'settingsPost'])->name('settings.post');
+        Route::get('/porto',[AdminFrontendController::class,'porto'])->name('porto');
+        Route::post('/porto',[AdminFrontendController::class,'portoPost'])->name('porto.post');
+        Route::put('/porto/{id}',[AdminFrontendController::class,'portoUpdate'])->name('porto.put');
+
+        Route::get('/about',[AdminFrontendController::class,'about'])->name('about');
+        Route::post('/benefit',[AdminFrontendController::class,'benefit'])->name('benefit');
+        Route::post('/benefit-update',[AdminFrontendController::class,'updateBenefit'])->name('benefit.update');
+        Route::get('/benefit/{id}',[AdminFrontendController::class,'deleteBenfit'])->name('benefit.delete');
+
+        Route::post('/banner',[AdminFrontendController::class,'banner'])->name('banner.post');
+        Route::post('/service-title',[AdminFrontendController::class,'serviceTitle'])->name('service.title');
+        Route::post('/service',[AdminFrontendController::class,'serviceAdd'])->name('service.post');
+        Route::put('/service/{id}',[AdminFrontendController::class,'serviceUpdate'])->name('service.update');
+        Route::get('/service/{id}',[AdminFrontendController::class,'serviceDelete'])->name('service.delete');
+
+        Route::post('quote',[AdminFrontendController::class,'quote'])->name('quote.post');
+
+        Route::post('testi',[AdminFrontendController::class,'testiTitle'])->name('testi.title');
+        Route::post('testi-add',[AdminFrontendController::class,'addTesti'])->name('testi.add');
+        Route::put('testi-edit/{id}',[AdminFrontendController::class,'editTesti'])->name('testi.update');
+        Route::get('message',[AdminFrontendController::class,'message'])->name('message');
+
+    });
 });
 
 Route::group(['prefix' => 'email'], function(){
@@ -109,11 +140,6 @@ Route::group(['prefix' => 'general'], function(){
     Route::get('profile', function () { return view('pages.general.profile'); });
     Route::get('pricing', function () { return view('pages.general.pricing'); });
     Route::get('timeline', function () { return view('pages.general.timeline'); });
-});
-
-Route::group(['prefix' => 'auth'], function(){
-    Route::get('login', function () { return view('pages.auth.login'); });
-    Route::get('register', function () { return view('pages.auth.register'); });
 });
 
 Route::group(['prefix' => 'error'], function(){

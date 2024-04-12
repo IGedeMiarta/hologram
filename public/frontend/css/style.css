@@ -559,7 +559,7 @@ article{position: relative; float: left; width: 100%;}
 .header-style.scrolled{position: fixed; border-bottom: 1px solid #e3e3e3; box-shadow: 0 0 10px rgba(0,0,0,.1); height: 100px; padding: 35px 0;}
 .header-style .header-content{height: 100%; width: 100%; position: relative; padding: 0 120px;}
 .logo{position: relative; display: inline-block; height: 50px; line-height: 50px; margin-top: -10px;}
-.logo img{vertical-align: middle; max-height: 30px; width: auto;}
+.logo img{vertical-align: middle; max-height: 100px; width: auto;}
 .header-style nav{display: inline-block; position: relative; float: right; vertical-align: middle; margin-right: -10px; font-weight: bold;}
 .header-style nav ul{list-style-type: none; position: relative; float: left;}
 .header-style nav ul > li{position: relative; float: left; display: block; margin-right: 30px; cursor: pointer;}
@@ -1261,14 +1261,14 @@ article{position: relative; float: left; width: 100%;}
 .benefits article span{position: absolute; left: 0; top: 50%; margin-top: -23px; height: 45px; width: 45px; line-height: 45px; text-align: center; border-radius: 50%; background-color: #f7f7f7; color: #222; font-size: 20px; font-weight: bold;}
 .benefits img{width: calc(100% - 40px); margin-right: 40px; height: auto;}
 
-.service{width: 190px; text-align: center; margin: 0 auto;}
+.service{width: 190px; text-align: justify; margin: 0 auto;}
 .service a{position: relative; float: left; display: block; width: 160px; height: 160px; margin-left: 15px; border: 1px solid #b1b1b1;}
 .service a img{position: absolute; left: 50%; top: 50%; -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);}
 .service a span{position: absolute; left: -19px; bottom: -13px; height: 30px; width: auto; padding: 0 10px; line-height: 28px; border: 1px solid transparent; background-color: #222; font-size: 13px; color: #fff; font-weight: 900;}
 .service a span:before{content: ""; position: absolute; left: 10px; top: 50%; height: 1px; width: 0; background-color: #fff;}
 .service p{float: left; margin: 30px 0;}
 
-.swiper-with-pagination.style2 .swiper-slide .team-description{position: absolute; left: 30px; top: 25px; color: #222; font-weight: 900; font-size: 16px; line-height: 20px;}
+.swiper-with-pagination.style2 .swiper-slide .team-description{ left: 30px; top: 25px; color: #222; font-weight: 900; font-size: 16px; line-height: 20px;}
 .swiper-with-pagination.style2 .swiper-slide .team-description span{font-weight: normal; color: #989898; font-size: 14px;}
 .swiper-with-pagination.style2 .swiper-slide > a:before{display: none;}
 

@@ -15,7 +15,8 @@
                         </div>
                         <div class="col-md-8 pl-md-0">
                             <div class="auth-form-wrapper px-4 py-5">
-                                <a href="#" class="noble-ui-logo logo-light d-block mb-2">Hologram<span>APP</span></a>
+                                <a href="#" class="noble-ui-logo logo-light d-block mb-2">Hologram<span
+                                        class="text-small">APP</span></a>
                                 <h5 class="text-muted font-weight-normal mb-4">Create an account.</h5>
                                 <form class="forms-sample" method="POST" action="{{ route('register.post') }}">
                                     @csrf

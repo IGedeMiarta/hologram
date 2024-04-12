@@ -15,13 +15,12 @@ class DefaultSettingSeeder extends Seeder
     public function run()
     {
         DefaultSettings::create([
-            'Name' =>  'Hologram',
-            'Logo' => null,
+            'Name' =>  'Hologram Custom Clothing',
+            'Logo' => 'logo.png',
             'phone'=> '09989991211',
             'mail' => 'info@hologram.co.id',
             's_fb' => null,
             's_ig' => null,
-            's_pin' => null,
             's_tt' => null
         ]);
     }

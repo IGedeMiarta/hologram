@@ -21,7 +21,6 @@ class CreateDefaultSettingsTable extends Migration
             $table->string('mail')->nullable();
             $table->string('s_fb')->nullable();
             $table->string('s_ig')->nullable();
-            $table->string('s_pin')->nullable();
             $table->string('s_tt')->nullable();
             $table->timestamps();
         });
