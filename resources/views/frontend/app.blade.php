@@ -10,7 +10,7 @@
     <meta property="og:title" content="{{ $activeApp->name }}">
     <meta property="og:description" content="{{ $about->desc }}">
     <meta property="og:image" content="{{ $activeApp->logo }}">
-    <meta property="og:url" content="{{ url('') }}">
+    <meta property="og:url" content="{{ request()->url() }}">
     <meta property="og:type" content="website">
 
     <meta name="format-detection" content="telephone=no" />
