@@ -2,7 +2,17 @@
 <html lang="en">
 
 <head>
+    @php
+        $activeApp = App\DefaultSettings::first();
+        $about = App\About::first();
+    @endphp
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta property="og:title" content="{{ $activeApp->name }}">
+    <meta property="og:description" content="{{ $about->desc }}">
+    <meta property="og:image" content="{{ $activeApp->logo }}">
+    <meta property="og:url" content="{{ url('') }}">
+    <meta property="og:type" content="website">
+
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="{{ asset('/frontend') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -12,11 +22,9 @@
     <link href="{{ asset('/frontend') }}/css/style.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/frontend') }}/css/all.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/frontend') }}/css/fontawesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="logo.png" rel="shortcut icon" />
+    <link href="{{ $activeApp->logo }}" rel="shortcut icon" />
     <link href="https://fonts.googleapis.com/css?family=Lato:700,900%7CDidact+Gothic" rel="stylesheet">
-    @php
-        $activeApp = App\DefaultSettings::first();
-    @endphp
+
     <title>{{ $activeApp->name }}</title>
 </head>
 
