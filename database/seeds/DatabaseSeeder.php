@@ -1,11 +1,14 @@
 <?php
 
 use App\Benefit;
+use App\CostType;
 use App\User;
 use Database\Seeders\AboutSeeder;
 use Database\Seeders\BenefitSeeder;
+use Database\Seeders\CostTypeSeeder;
 use Database\Seeders\DefaultSettingSeeder;
 use Database\Seeders\PortofolioSeeder;
+use Database\Seeders\ProductTypeSeeder;
 use Database\Seeders\ServiceSeeder;
 use Database\Seeders\TestiSeeder;
 use Database\Seeders\UserSeeder;
@@ -27,7 +30,9 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             BenefitSeeder::class,
             ServiceSeeder::class,
-            TestiSeeder::class
+            TestiSeeder::class,
+            CostTypeSeeder::class,
+            ProductTypeSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
     }

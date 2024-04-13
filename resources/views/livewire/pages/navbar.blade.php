@@ -69,14 +69,19 @@
                     <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i data-feather="mail"></i>
+                        @if ($countMessage > 0)
+                            <div class="indicator">
+                                <div class="circle"></div>
+                            </div>
+                        @endif
                     </a>
                     <div class="dropdown-menu" aria-labelledby="messageDropdown">
                         <div class="dropdown-header d-flex align-items-center justify-content-between">
                             <p class="mb-0 font-weight-medium">{{ $countMessage }} Pesan Hari Ini</p>
-                            <a href="javascript:;" class="text-muted">Clear all</a>
+                            {{-- <a href="javascript:;" class="text-muted">Clear all</a> --}}
                         </div>
                         <div class="dropdown-body">
-                            @foreach ($message as $item)
+                            @forelse ($message as $item)
                                 <a href="{{ route('admin.frontend.message') }}" class="dropdown-item">
                                     <div class="figure">
                                         <img src="{{ url('https://via.placeholder.com/30x30') }}" alt="userr">
@@ -84,22 +89,37 @@
                                     <div class="content">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <p>{{ $item->name }}</p>
-                                            <p class="sub-text text-muted">{{ $item->created_at->diffforhumans() }}</p>
+                                            <p class="sub-text text-muted">{{ $item->created_at->diffforhumans() }}
+                                            </p>
                                         </div>
                                         <p class="sub-text text-muted">
                                             {{ strlen($item->message) > 50 ? substr($item->message, 0, 50) . '...' : $item->message }}
                                         </p>
                                     </div>
                                 </a>
-                            @endforeach
+                            @empty
+                                <a href="#" class="dropdown-item">
+                                    <div class="content">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            {{-- <p>{{ $item->name }}</p>
+                                            <p class="sub-text text-muted">{{ $item->created_at->diffforhumans() }}
+                                            </p> --}}
+                                        </div>
+                                        <p class="sub-text text-muted">
+                                            Tidak Ada Pesan Saat Ini, Stay Tune.
+                                        </p>
+                                    </div>
+                                </a>
+                            @endforelse
+
 
                         </div>
                         <div class="dropdown-footer d-flex align-items-center justify-content-center">
-                            <a href="{{ route('admin.frontend.message') }}">View all</a>
+                            <a href="{{ route('admin.frontend.message') }}">Lihat Semua Pesan</a>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown nav-notifications">
+                <li class="nav-item dropdown nav-notifications d-none">
                     <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i data-feather="bell"></i>

@@ -13,10 +13,13 @@
 
 use App\Http\Controllers\AdminFrontendController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CostController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -62,6 +65,24 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function(){
         Route::get('message',[AdminFrontendController::class,'message'])->name('message');
 
     });
+
+    Route::get('supplier', [SupplierController::class,'index'])->name('supplier');
+    Route::post('supplier', [SupplierController::class,'store'])->name('supplier.post');
+    Route::put('supplier/{id}', [SupplierController::class,'update'])->name('supplier.update');
+    Route::delete('supplier/{id}', [SupplierController::class,'delete'])->name('supplier.delete');
+
+    Route::get('delivery',[DeliveryController::class,'index'])->name('delivery');
+    Route::post('delivery', [DeliveryController::class,'store'])->name('delivery.post');
+    Route::put('delivery/{id}', [DeliveryController::class,'update'])->name('delivery.update');
+
+    Route::get('/product',[ProductController::class,'index'])->name('product');
+    Route::post('/product',[ProductController::class,'post'])->name('product.post');
+    Route::put('/product/{id}',[ProductController::class,'edit'])->name('product.update');
+
+    Route::get('cost',[CostController::class,'index'])->name('cost');
+    Route::post('cost',[CostController::class,'post'])->name('cost.post');
+    Route::put('cost/{id}',[CostController::class,'update'])->name('cost.update');
+
 });
 
 Route::group(['prefix' => 'email'], function(){

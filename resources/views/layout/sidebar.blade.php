@@ -12,38 +12,68 @@
     <div class="sidebar-body">
         <ul class="nav">
             <li class="nav-item nav-category">Main</li>
-            <li class="nav-item {{ active_class(['admin/dashboard']) }}">
+            <li class="nav-item {{ is_active('admin.dashboard') }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link">
                     <i class="link-icon" data-feather="home"></i>
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item nav-category">Frontend</li>
-            <li class="nav-item {{ active_class(['admin/frontend/porto']) }}">
-                <a href="{{ route('admin.frontend.porto') }}" class="nav-link">
-                    <i class="link-icon" data-feather="image"></i>
-                    <span class="link-title">Home Page</span>
-                </a>
-            </li>
-            <li class="nav-item {{ active_class(['admin/frontend/about']) }}">
-                <a href="{{ route('admin.frontend.about') }}" class="nav-link">
+            <li class="nav-item {{ route_active_class(['admin.frontend.*']) }}">
+                <a class="nav-link" data-toggle="collapse" href="#adminFrontend" role="button"
+                    aria-expanded="{{ is_active_route(['admin/frontend/*']) }}" aria-controls="adminFrontend">
                     <i class="link-icon" data-feather="airplay"></i>
-                    <span class="link-title">About Page</span>
+                    <span class="link-title"> Home Pages</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ route_show_class(['admin.frontend.*']) }}" id="adminFrontend">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.frontend.porto') }}"
+                                class="nav-link {{ route_active_class(['admin.frontend.porto']) }}">Portofolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.frontend.about') }}"
+                                class="nav-link {{ route_active_class(['admin.frontend.about']) }}">About Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.frontend.settings') }}"
+                                class="nav-link {{ route_active_class(['admin.frontend.settings']) }}">Contact App</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.frontend.message') }}"
+                                class="nav-link {{ route_active_class(['admin.frontend.message']) }}">Message</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item nav-category">Master Data</li>
+            <li class="nav-item {{ route_active_class(['admin.product']) }}">
+                <a href="{{ route('admin.product') }}" class="nav-link">
+                    <i class="link-icon" data-feather="tag"></i>
+                    <span class="link-title">Product</span>
                 </a>
             </li>
-            <li class="nav-item {{ active_class(['admin/frontend/settings']) }}">
-                <a href="{{ route('admin.frontend.settings') }}" class="nav-link">
-                    <i class="link-icon" data-feather="flag"></i>
-                    <span class="link-title">Contact App</span>
+            <li class="nav-item {{ active_class(['admin/supplier']) }}">
+                <a href="{{ route('admin.supplier') }}" class="nav-link">
+                    <i class="link-icon" data-feather="award"></i>
+                    <span class="link-title">Supplier</span>
                 </a>
             </li>
-            <li class="nav-item {{ active_class(['admin/frontend/message']) }}">
-                <a href="{{ route('admin.frontend.message') }}" class="nav-link">
-                    <i class="link-icon" data-feather="mail"></i>
-                    <span class="link-title">Message</span>
+            <li class="nav-item {{ active_class(['admin/delivery']) }}">
+                <a href="{{ route('admin.delivery') }}" class="nav-link">
+                    <i class="link-icon" data-feather="truck"></i>
+                    <span class="link-title">Delivery</span>
                 </a>
             </li>
-            {{-- @dd(env('APP_ENV')) --}}
+            <li class="nav-item nav-category">Transaction</li>
+            <li class="nav-item {{ active_class(['admin/cost']) }}">
+                <a href="{{ route('admin.cost') }}" class="nav-link">
+                    <i class="link-icon" data-feather="coffee"></i>
+                    <span class="link-title">Pengeluaran</span>
+                </a>
+            </li>
             @if (env('APP_ENV') === 'local')
                 <li class="nav-item nav-category">web apps</li>
                 <li class="nav-item {{ active_class(['email/*']) }}">
