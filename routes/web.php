@@ -19,6 +19,7 @@ use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Livewire\Admin\Order;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -82,6 +83,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function(){
     Route::get('cost',[CostController::class,'index'])->name('cost');
     Route::post('cost',[CostController::class,'post'])->name('cost.post');
     Route::put('cost/{id}',[CostController::class,'update'])->name('cost.update');
+
+    Route::get('/order',Order::class)->name('order');
 
 });
 

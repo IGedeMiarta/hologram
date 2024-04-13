@@ -74,6 +74,12 @@
                     <span class="link-title">Pengeluaran</span>
                 </a>
             </li>
+            <li class="nav-item {{ active_class(['admin/order']) }}">
+                <a href="{{ route('admin.order') }}" class="nav-link">
+                    <i class="link-icon" data-feather="coffee"></i>
+                    <span class="link-title">Order</span>
+                </a>
+            </li>
             @if (env('APP_ENV') === 'local')
                 <li class="nav-item nav-category">web apps</li>
                 <li class="nav-item {{ active_class(['email/*']) }}">
