@@ -172,7 +172,7 @@
                             <input type="number" class="form-control col-2" placeholder="%"
                                 wire:model="disc_percent" wire:keydown.enter="checkAmount">
                             <!-- 20% width -->
-                            <input type="number" class="form-control col-4" placeholder="diskon amount"
+                            <input type="number" class="form-control col-4" placeholder="00,000"
                                 wire:model="disc_amount" wire:keydown.enter="checkAmount">
                             <!-- 30% width -->
                         </div>
@@ -186,7 +186,7 @@
                             <input type="number" class="form-control col-2" placeholder="%"
                                 wire:model="charge_percent" wire:keydown.enter="checkAmount"> <!-- 20% width -->
                             <input type="number" class="form-control col-4" wire:model="charge_amount"
-                                placeholder="carge amount" wire:keydown.enter="checkAmount">
+                                placeholder="00,000" wire:keydown.enter="checkAmount">
                             <!-- 30% width -->
                         </div>
                     </div>
