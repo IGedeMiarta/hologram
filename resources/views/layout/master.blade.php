@@ -76,6 +76,7 @@ License: You must have a valid license purchased only from https://themeforest.n
 
     @stack('custom-scripts')
     {{-- <script src="{{ asset('assets/js/sweet-alert.js') }}"></script> --}}
+
     <script>
         const Toast = Swal.mixin({
             toast: true,
@@ -89,22 +90,27 @@ License: You must have a valid license purchased only from https://themeforest.n
             }
         });
         // Check for success message
-        @if (session('success'))
+    </script>
+    @if (session('success'))
+        <script>
             // Display success toast message
             Toast.fire({
                 icon: 'success',
                 title: '{{ session('success') }}'
             })
-        @endif
-        @if (session('error'))
+        </script>
+    @endif
+    @if (session('error'))
+        <script>
             // Display success toast message
             Toast.fire({
                 icon: 'error',
                 text: '{{ session('error') }}',
             });
-        @endif
-        @livewireScripts
-    </script>
+        </script>
+    @endif
+    @livewireScripts
+
 </body>
 
 </html>

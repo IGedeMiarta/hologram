@@ -1,17 +1,17 @@
 @extends('layout.master')
 
 @push('plugin-styles')
-  <!-- Plugin css import here -->
+    <!-- Plugin css import here -->
 @endpush
 
 @section('content')
-  <!-- Page content here -->
+    <!-- Page content here -->
 @endsection
 
 @push('plugin-scripts')
-  <!-- Plugin js import here -->
+    <!-- Plugin js import here -->
 @endpush
 
 @push('custom-scripts')
-  <!-- Custom js here -->
+    <!-- Custom js here -->
 @endpush

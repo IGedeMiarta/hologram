@@ -1,5 +1,6 @@
 <?php
 
+use App\Order;
 use Carbon\Carbon;
 use Illuminate\Routing\Route;
 
@@ -46,6 +47,9 @@ function getAmount($num) {
 function rp($num){
   return 'Rp '.number_format($num,2,'.',',');
 }
+function num($num){
+  return number_format($num,2,'.',',');
+}
 function dateFormat($d){
   return date('d M Y',strtotime($d));
 }
@@ -55,4 +59,29 @@ function getMonthStartEndDates($monthOffset) {
     $startOfMonth = Carbon::now()->startOfMonth()->subMonths($monthOffset);
     $endOfMonth = Carbon::now()->endOfMonth()->subMonths($monthOffset);
     return [$startOfMonth, $endOfMonth];
+}
+
+function trx()
+{
+    // Get the current date in the format 'yymmdd'
+    $date = date('ymd');
+
+    // Get the last order record from the database
+    $lastOrder = Order::latest()->first();
+
+    // If there are no existing orders, set the order number to 1
+    $orderNumber = 1;
+
+    // If there are existing orders, increment the last order number by 1
+    if ($lastOrder) {
+        $orderNumber = $lastOrder->order_number + 1;
+    }
+
+    // Format the order number with leading zeros if needed (assuming max 9999)
+    $formattedOrderNumber = str_pad($orderNumber, 4, '0', STR_PAD_LEFT);
+
+    // Concatenate the components to form the transaction number
+    $transactionNumber = 'ORDR' . $date . $formattedOrderNumber;
+
+    return $transactionNumber;
 }

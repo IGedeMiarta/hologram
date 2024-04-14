@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductionFeesTable extends Migration
+class CreateProductionProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateProductionFeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('production_fees', function (Blueprint $table) {
+        Schema::create('production_products', function (Blueprint $table) {
             $table->id();
-            $table->string('trx');
             $table->string('name');
-            $table->float('amount',15,2);
-            $table->string('notes')->nullable();
+            $table->string('type');
+            $table->string('size');
+            $table->string('color');
+            $table->integer('stock');
+            $table->string('mark')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateProductionFeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('production_fees');
+        Schema::dropIfExists('production_products');
     }
 }

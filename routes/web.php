@@ -17,6 +17,7 @@ use App\Http\Controllers\CostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Livewire\Admin\Order;
@@ -84,7 +85,9 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function(){
     Route::post('cost',[CostController::class,'post'])->name('cost.post');
     Route::put('cost/{id}',[CostController::class,'update'])->name('cost.update');
 
-    Route::get('/order',Order::class)->name('order');
+    Route::get('/order',[OrderController::class,'index'])->name('order');
+    Route::get('/order-all',[OrderController::class,'index'])->name('order.all');
+    Route::get('/order-form',[OrderController::class,'orderForm'])->name('order.form');
 
 });
 

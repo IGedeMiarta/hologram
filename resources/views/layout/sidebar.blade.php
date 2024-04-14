@@ -74,11 +74,31 @@
                     <span class="link-title">Pengeluaran</span>
                 </a>
             </li>
-            <li class="nav-item {{ active_class(['admin/order']) }}">
+            {{-- <li class="nav-item {{ active_class(['admin/order']) }}">
                 <a href="{{ route('admin.order') }}" class="nav-link">
                     <i class="link-icon" data-feather="coffee"></i>
                     <span class="link-title">Order</span>
                 </a>
+            </li> --}}
+            <li class="nav-item {{ route_active_class(['admin.order.*']) }}">
+                <a class="nav-link" data-toggle="collapse" href="#order" role="button"
+                    aria-expanded="{{ is_active_route(['admin/order/*']) }}" aria-controls="order">
+                    <i class="link-icon" data-feather="download"></i>
+                    <span class="link-title">Order</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse {{ route_show_class(['admin.order.*']) }}" id="order">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.order.all') }}"
+                                class="nav-link {{ route_active_class(['admin.order.all']) }}">Semua Order</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.order.form') }}"
+                                class="nav-link {{ route_active_class(['admin.order.form']) }}">Buat Order</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             @if (env('APP_ENV') === 'local')
                 <li class="nav-item nav-category">web apps</li>
