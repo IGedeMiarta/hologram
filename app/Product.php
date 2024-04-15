@@ -13,4 +13,7 @@ class Product extends Model
     {
         return $this->belongsTo(ProductType::class, 'type', 'mark');
     }
+    public function orderDetail(){
+        return $this->hasMany(OrderDetail::class);
+    }
 }

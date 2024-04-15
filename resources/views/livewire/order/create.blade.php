@@ -1,4 +1,14 @@
 <div>
+    <div class="row d-none" id="errInfo">
+        <div class="col-md-12">
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Error!</h4>
+                <p id="errMsg"></p>
+                <hr>
+                <p class="mb-0">Coba Hubungi Developer :(</p>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
@@ -148,9 +158,9 @@
                             placeholder="catatan pemesanan.." wire:model="order_notes"></textarea>
                     </div>
                     <div class="form-group" wire:ignore>
-                        <label for="">Penerima</label>
+                        <label for="">Kasir</label>
                         <input type="text" name="kasir" id="" value="{{ auth()->user()->name }}"
-                            class="form-control">
+                            class="form-control" readonly>
                     </div>
                 </div>
             </div>
@@ -160,7 +170,7 @@
                 <div class="card-body">
 
                     <div class="form-group" wire:ignore>
-                        <label for="">DP</label>
+                        <label for="">Payment</label>
                         <input class="form-control mb-4 mb-md-0" wire:model="dp_amount" type="number" />
                     </div>
                     <div class="mt-2">
@@ -196,3 +206,15 @@
     </div>
     <button class="btn btn-primary mt-3 btn-block btn-lg" wire:click="submitOrder">Simpan</button>
 </div>
+
+@push('custom-scripts')
+    <script>
+        $(document).ready(function() {
+            Livewire.on('error', function(data) {
+                $('#errInfo').removeClass('d-none');
+                $('#errMsg').text(data);
+            });
+
+        });
+    </script>
+@endpush

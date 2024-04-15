@@ -89,6 +89,9 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function(){
     Route::get('/order-all',[OrderController::class,'index'])->name('order.all');
     Route::get('/order-form',[OrderController::class,'orderForm'])->name('order.form');
 
+    Route::get('invoice/{id}',[DashboardController::class,'invoice'])->name('invoice');
+    Route::get('nota/{id}',[DashboardController::class,'nota'])->name('nota');
+
 });
 
 Route::group(['prefix' => 'email'], function(){
