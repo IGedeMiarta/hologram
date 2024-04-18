@@ -90,13 +90,14 @@
                 <div class="collapse {{ route_show_class(['admin.order.*']) }}" id="order">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{ route('admin.order.all') }}"
-                                class="nav-link {{ route_active_class(['admin.order.all']) }}">Semua Order</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ route('admin.order.form') }}"
                                 class="nav-link {{ route_active_class(['admin.order.form']) }}">Buat Order</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.order.all') }}"
+                                class="nav-link {{ route_active_class(['admin.order.all']) }}">Semua Order</a>
+                        </li>
+
                     </ul>
                 </div>
             </li>

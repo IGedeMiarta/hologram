@@ -18,7 +18,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->type = $request->type;
-        $product->size = $request->size;
+        $product->size = strtoupper($request->size);
         $product->color = strtoupper($request->color);
         $product->stock  = $request->stok;
         $product->hpp = getAmount($request->hpp);
@@ -31,7 +31,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->name = $request->name;
         $product->type = $request->type;
-        $product->size = $request->size;
+        $product->size = strtoupper($request->size);
         $product->color = strtoupper($request->color);
         $product->stock  = $request->stok;
         $product->hpp = getAmount($request->hpp);

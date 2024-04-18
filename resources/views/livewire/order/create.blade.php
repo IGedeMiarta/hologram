@@ -57,15 +57,20 @@
 
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-5" wire:ignore>
+                        <div class="col-md-4">
                             <label for="name">Produk<i class="text-danger">*</i></label>
                             <select wire:model="product_id" class=" form-control" id="selectProduct">
                                 <option>--Pilih</option>
-                                @foreach ($products as $p)
+                                @foreach ($allProduct as $p)
                                     <option value="{{ $p->id }}">{{ $p->size }} | {{ $p->name }} |
                                         {{ $p->color }}</option>
                                 @endforeach
                             </select>
+                            <div class="mt-2">
+                                <a href="#" data-toggle="modal" data-target="#addProduct">Tambah Produk</a>
+                            </div>
+
+                            <livewire:order.add-product />
                         </div>
                         <div class="col-md-2">
                             <div class="form-group" wire:ignore>
@@ -73,16 +78,16 @@
                                 <input type="number" wire:model="jml" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="form-group" wire:ignore>
                                 <label for="notes">Catatan<i class="text-danger">*</i></label>
                                 <input type="text" wire:model="notes" id="notes" class="form-control">
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label></label>
-                                <button class="btn btn-success mt-2" wire:click="addProduk">Tambahkan</button>
+                        <div class="col-md-2">
+                            <div class="form-group" wire:ignore>
+                                <label for="notes"><i class="text-danger">*</i></label>
+                                <button class="btn btn-success form-control" wire:click="addProduk">Tambahkan</button>
                             </div>
                         </div>
                     </div>
@@ -157,11 +162,7 @@
                         <textarea name="notes" id="" cols="30" rows="5" class="form-control"
                             placeholder="catatan pemesanan.." wire:model="order_notes"></textarea>
                     </div>
-                    <div class="form-group" wire:ignore>
-                        <label for="">Kasir</label>
-                        <input type="text" name="kasir" id="" value="{{ auth()->user()->name }}"
-                            class="form-control" readonly>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -169,10 +170,6 @@
             <div class="card">
                 <div class="card-body">
 
-                    <div class="form-group" wire:ignore>
-                        <label for="">Payment</label>
-                        <input class="form-control mb-4 mb-md-0" wire:model="dp_amount" type="number" />
-                    </div>
                     <div class="mt-2">
                         <label for="">Discount</label>
                         <div class="input-group" wire:ignore>
@@ -182,7 +179,7 @@
                             <input type="number" class="form-control col-2" placeholder="%"
                                 wire:model="disc_percent" wire:keydown.enter="checkAmount">
                             <!-- 20% width -->
-                            <input type="number" class="form-control col-4" placeholder="00,000"
+                            <input type="number" class="form-control col-4 " placeholder="00,000"
                                 wire:model="disc_amount" wire:keydown.enter="checkAmount">
                             <!-- 30% width -->
                         </div>
@@ -199,6 +196,10 @@
                                 placeholder="00,000" wire:keydown.enter="checkAmount">
                             <!-- 30% width -->
                         </div>
+                    </div>
+                    <div class="form-group mt-3" wire:ignore>
+                        <label for="">DP</label>
+                        <input class="form-control mb-4 mb-md-0" wire:model="dp_amount" type="number" />
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use App\Client;
 use App\Order;
 use App\OrderDetail;
 use App\Product;
+use App\ProductType;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -16,7 +17,7 @@ class Create extends Component
     use WithFileUploads;
     public $client,$due_date;
     public $client_id;
-    public $products;
+    public $allProduct;
     public $product_id;
     public $jml;
     public $notes;
@@ -32,12 +33,14 @@ class Create extends Component
     public $charge_percent;
     public $charge_amount;
     public $fin_amount;
+    public $allType;
     
 
     public $table = [];
     public function mount(){
         $this->client = Client::all();
-        $this->products = Product::all();
+        $this->allProduct = Product::all();
+        $this->allType = ProductType::all();
     }
     public function addProduk()
     {
@@ -188,7 +191,7 @@ class Create extends Component
         $this->total =  $this->getTotalAmount();
     }
 
-    protected $listeners = ['reloadClient'];
+    protected $listeners = ['reloadClient','reloadProduk'];
     public function reloadClient()
     {
         $client = Client::orderByDesc('id')->first();
@@ -196,4 +199,11 @@ class Create extends Component
         $this->mount();
         $this->render();
     }
+    public function reloadProduk(){
+        $this->mount();
+        $this->render();
+        $this->allProduct = Product::all();
+        $this->emit('success');
+    }
+
 }
