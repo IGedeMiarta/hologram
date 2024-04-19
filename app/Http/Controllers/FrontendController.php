@@ -19,7 +19,7 @@ class FrontendController extends Controller
 {
     public function index(){
         $data['app'] = DefaultSettings::first();
-        $data['porto'] = Portofolio::orderBy('complate_date')->where('status',1)->paginate(4);
+        $data['porto'] = Portofolio::orderByDesc('complate_date')->where('status',1)->paginate(4);
         return view('frontend.index',$data);
     }
     public function about(){
